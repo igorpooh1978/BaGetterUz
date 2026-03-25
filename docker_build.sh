@@ -59,7 +59,7 @@ echo "▶️ Архивация контейнера BagetterUz..."
 gzip -f bagetter.tar
 echo "✅  Архивация контейнера BagetterUz завершена."
 
-mv /mnt/c/Users/igorpooh/Desktop/Projects/Uz.EnterCo/BaGetterUz/*.tar.gz /mnt/c/Users/igorpooh/Desktop/Projects/Uz.EnterCo/BaGetterUz/DockerBuild
+mv /mnt/c/Users/igorpooh/Desktop/Projects/Uz.EnterCo/BaGetterUz/*.tar.gz /mnt/c/Users/igorpooh/Desktop/Projects/Uz.EnterCo/BaGetterUz/DockerBuild/
 
 echo "▶️Отправка контейнеров..."
 sshpass -p '@#123igo78' rsync -avP --inplace /mnt/c/Users/igorpooh/Desktop/Projects/Uz.EnterCo/BaGetterUz/DockerBuild*.tar.gz root@80.87.197.180:/usr/local/myhoreca/
