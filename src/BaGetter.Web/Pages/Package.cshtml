@@ -150,58 +150,6 @@ else
     </div>
 }
 
-@if (Model.Found)
-{
-    <script type="text/javascript">
-        let tabs = [
-            @if (Model.IsDotnetTemplate)
-            {
-                <text>
-                {
-                    name: ".NET CLI",
-                    prefix: ">",
-                    content: ["dotnet new --install @Model.Package.Id::@Model.Package.NormalizedVersionString"],
-                },
-                </text>
-            }
-            else if (Model.IsDotnetTool)
-            {
-                <text>
-                {
-                    name: ".NET CLI",
-                    prefix: ">",
-                    content: ["dotnet tool install --global @Model.Package.Id --version @Model.Package.NormalizedVersionString"],
-                },
-                </text>
-            }
-            else
-            {
-                <text>
-                {
-                    name: ".NET CLI",
-                    prefix: ">",
-                    content: ["dotnet add package @Model.Package.Id --version @Model.Package.NormalizedVersionString"],
-                },
-                {
-                    name: "PackageReference",
-                    prefix: "",
-                    content: ["<PackageReference Include=\"@Model.Package.Id\" Version=\"@Model.Package.NormalizedVersionString\" />"]
-                },
-                {
-                    name: "Paket CLI",
-                    prefix: ">",
-                    content: ["paket add @Model.Package.Id --version @Model.Package.NormalizedVersionString"]
-                },
-                {
-                    name: "Package Manager",
-                    prefix: "PM>",
-                    content: ["Install-Package @Model.Package.Id -Version @Model.Package.NormalizedVersionString"]
-                }
-                </text>
-            }
-        ];
-    </script>
-}
 
 @functions {
 
