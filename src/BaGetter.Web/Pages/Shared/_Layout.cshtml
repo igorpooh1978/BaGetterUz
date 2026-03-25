@@ -25,62 +25,15 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-inverse" role="navigation">
-            <div class="container">
-                <div class="row">
-                    <div id="navbar" class="col-sm-12">
-                        <ul class="nav navbar-nav" role="tablist">
-                            <li role="presentation"><a asp-area="" asp-page="/Index" role="tab" nav-link><span>Packages</span></a></li>
-                            <li role="presentation"><a asp-area="" asp-page="/Upload" role="tab" nav-link><span>Upload</span></a></li>
-                            @if (StatisticsOptions.Value.EnableStatisticsPage)
-                            {
-                                <li role="presentation"><a asp-area="" asp-page="/Statistics" role="tab" nav-link><span>Statistics</span></a></li>
-                            }
-                            <li role="presentation">
-                                <a role="tab" href="https://www.bagetter.com/docs" target="_blank" rel="noopener noreferrer">
-                                    <span>Documentation</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="container search-container">
-                <div class="row">
-                    <form class="col-sm-12" action="@Url.Page("/Index")" method="get">
-                        <div class="input-group">
-                            <input type="text"
-                                   name="q"
-                                   value="@ViewData["SearchQuery"]"
-                                   class="form-control"
-                                   autoComplete="off"
-                                   placeholder="Search packages..." />
 
-                            <span class="input-group-btn">
-                                <button type="submit"
-                                        class="btn btn-default"
-                                        title="Search for packages">
-                                    <span class="ms-Icon ms-Icon--Search" aria-hidden="true"></span>
-                                </button>
-                            </span>
-                        </div>
-
-                        @await RenderSectionAsync("SearchForm", required: false)
-                    </form>
-                </div>
-            </div>
-        </nav>
-    </header>
+    </header> 
 
     <main role="main" class="container main-container">
         @RenderBody()
     </main>
 
     <footer class="footer">
-        <p>
-            Version: @Version.Version
-        </p>
-        @Html.AddReleaseInformationAsComment()
+
     </footer>
 
     <script src="~/_content/BaGetter.Web/lib/alpinejs/dist/alpine.js"></script>
@@ -89,6 +42,5 @@
     <script src="~/_content/BaGetter.Web/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="~/_content/BaGetter.Web/js/site.js" asp-append-version="true"></script>
 
-    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
