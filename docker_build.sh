@@ -21,8 +21,8 @@ find . -type d \( -name bin -o -name obj \) -not -path "./publish/*" -exec rm -r
 #./dotnet-install.sh --version 10.0.201 --install-dir $HOME/.dotnet
 
 # 3. Настраиваем переменные для текущей сессии
-#export DOTNET_ROOT=$HOME/.dotnet
-#export PATH=$DOTNET_ROOT:$PATH
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$DOTNET_ROOT:$PATH
 
 # 4. Добавляем в ~/.bashrc, чтобы было навсегда
 #if ! grep -q 'DOTNET_ROOT=$HOME/.dotnet' ~/.bashrc; then
