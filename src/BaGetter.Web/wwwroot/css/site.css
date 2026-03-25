@@ -592,3 +592,9 @@ code {
   background-color: var(--code-bg-color);
   color: var(--code-text-color);
 }
+.modal-header {
+  display: flex;
+  flex-direction: row; /* элементы в ряд */
+  align-items: center; /* вертикальное выравнивание по центру */
+  gap: 15px; /* расстояние между логотипом и заголовком */
+}

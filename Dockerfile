@@ -14,4 +14,4 @@ ENV Database__ConnectionString "Data Source=/data/db/bagetter.db"
 WORKDIR /app
 COPY ./publish /app
 EXPOSE 5000
-ENTRYPOINT ["dotnet", "ResDiary.dll"]
+ENTRYPOINT ["dotnet", "BaGetter.dll"]
