@@ -53,14 +53,13 @@ echo "▶️Сборка контейнера BagetterUz..."
 docker save -o bagetter.tar bagetter:latest
 echo "✅  Сборка контейнера BagetterUz завершена."
 
-exit
 rm -rf ./publish
 
 echo "▶️ Архивация контейнера BagetterUz..."
 gzip -f bagetter.tar
 echo "✅  Архивация контейнера BagetterUz завершена."
 
-mv /mnt/c/Users/igorpooh/Desktop/Projects/Ru.Dolgov/ResDiary/*.tar.gz /mnt/c/Users/igorpooh/Desktop/Projects/Ru.Dolgov/ResDiary/DockerBuild
+mv /mnt/c/Users/igorpooh/Desktop/Projects/Ru.Dolgov/Uz.EnterCo/BaGetterUz/*.tar.gz /mnt/c/Users/igorpooh/Desktop/Projects/Uz.EnterCo/BaGetterUz/DockerBuild
 
 exit
 echo "▶️Отправка контейнеров..."
