@@ -12,32 +12,32 @@ find . -type d \( -name bin -o -name obj \) -not -path "./publish/*" -exec rm -r
 # Установка .NET SDK 10.0.201 для WSL
 
 # 1. Скачиваем установочный скрипт
-echo "Скачиваем dotnet-install.sh..."
-wget -q https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
-chmod +x dotnet-install.sh
+#echo "Скачиваем dotnet-install.sh..."
+#wget -q https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
+#chmod +x dotnet-install.sh
 
 # 2. Устанавливаем SDK 10.0.201 в домашнюю папку
-echo "Устанавливаем .NET SDK 10.0.201..."
-./dotnet-install.sh --version 10.0.201 --install-dir $HOME/.dotnet
+#echo "Устанавливаем .NET SDK 10.0.201..."
+#./dotnet-install.sh --version 10.0.201 --install-dir $HOME/.dotnet
 
 # 3. Настраиваем переменные для текущей сессии
-export DOTNET_ROOT=$HOME/.dotnet
-export PATH=$DOTNET_ROOT:$PATH
+#export DOTNET_ROOT=$HOME/.dotnet
+#export PATH=$DOTNET_ROOT:$PATH
 
 # 4. Добавляем в ~/.bashrc, чтобы было навсегда
-if ! grep -q 'DOTNET_ROOT=$HOME/.dotnet' ~/.bashrc; then
-    echo "" >> ~/.bashrc
-    echo "# .NET 10.0.201 SDK" >> ~/.bashrc
-    echo "export DOTNET_ROOT=\$HOME/.dotnet" >> ~/.bashrc
-    echo "export PATH=\$DOTNET_ROOT:\$PATH" >> ~/.bashrc
-fi
+#if ! grep -q 'DOTNET_ROOT=$HOME/.dotnet' ~/.bashrc; then
+#    echo "" >> ~/.bashrc
+#    echo "# .NET 10.0.201 SDK" >> ~/.bashrc
+#    echo "export DOTNET_ROOT=\$HOME/.dotnet" >> ~/.bashrc
+#    echo "export PATH=\$DOTNET_ROOT:\$PATH" >> ~/.bashrc
+#fi
 
 # 5. Проверяем установку
-echo "Проверяем установку..."
-dotnet --list-sdks
-dotnet --version
+#echo "Проверяем установку..."
+#dotnet --list-sdks
+#dotnet --version
 
-echo "Готово! SDK 10.0.201 должен работать с global.json и сборкой Docker."
+#echo "Готово! SDK 10.0.201 должен работать с global.json и сборкой Docker."
 
 
 
@@ -47,57 +47,18 @@ echo "▶️ Публикация проектов с оптимизациями
 
 dotnet publish -c Release -f net10.0 -r linux-x64 -o ./publish
 
-exit
-
-rm -rf ./publish/ResDiary/wwwroot/html
-
 docker compose build --no-cache
-echo "▶️Сборка контейнера DbUpdater..."
-docker save -o dbupdater.tar dbupdater:latest
-echo "✅  Сборка контейнера DbUpdater завершена."
 
-echo "▶️Сборка контейнера ResDiary..."
-docker save -o resdiary.tar resdiary:latest
-echo "✅  Сборка контейнера ResDiary завершена."
+echo "▶️Сборка контейнера BagetterUz..."
+docker save -o bagetter.tar bagetter:latest
+echo "✅  Сборка контейнера BagetterUz завершена."
 
-echo "▶️Сборка контейнера ApiGateway..."
-docker save -o apigateway.tar apigateway:latest
-echo "✅  Сборка контейнера ApiGateway завершена."
-
-echo "▶️Сборка контейнера ServiceUser..."
-docker save -o serviceuser.tar serviceuser:latest
-echo "✅  Сборка контейнера User завершена."
-
-echo "▶️Сборка контейнера ServiceResDiary..."
-docker save -o serviceresdiary.tar serviceresdiary:latest
-echo "✅  Сборка контейнера ServiceResDiary завершена."
-
-echo "▶️Сборка контейнера ServiceSyrvePlugin..."
-docker save -o servicesyrveplugin.tar servicesyrveplugin:latest
-echo "✅  Сборка контейнера ServiceSyrvePlugin завершена."
-
-
+exit
 rm -rf ./publish
 
-echo "▶️ Архивация контейнера DbUpdater..."
+echo "▶️ Архивация контейнера BagetterUz..."
 gzip -f dbupdater.tar
-echo "✅  Архивация контейнера DbUpdater завершена."
-
-echo "▶️ Архивация контейнера ResDiary..."
-gzip -f resdiary.tar
-echo "✅  Архивация контейнера ResDiary завершена."
-echo "▶️ Архивация контейнера ApiGateway..."
-gzip -f apigateway.tar
-echo "✅  Архивация контейнера ApiGateway завершена."
-echo "▶️ Архивация контейнера ServiceUser..."
-gzip -f serviceuser.tar
-echo "✅  Архивация контейнера ServiceUser завершена."
-echo "▶️ Архивация контейнера ServiceResDiary..."
-gzip -f serviceresdiary.tar
-echo "✅  Архивация контейнера ServiceResDiary завершена."
-echo "▶️ Архивация контейнера ServiceSyrvePlugin..."
-gzip -f servicesyrveplugin.tar
-echo "✅  Архивация контейнера ServiceSyrvePlugin завершена."
+echo "✅  Архивация контейнера BagetterUz завершена."
 
 mv /mnt/c/Users/igorpooh/Desktop/Projects/Ru.Dolgov/ResDiary/*.tar.gz /mnt/c/Users/igorpooh/Desktop/Projects/Ru.Dolgov/ResDiary/DockerBuild
 
