@@ -45,7 +45,7 @@ echo "Готово! SDK 10.0.201 должен работать с global.json и
 dotnet clean  -c Release
 echo "▶️ Публикация проектов с оптимизациями ..."
 
-dotnet publish  -c Release -r linux-x64 -o ./publish
+dotnet publish -c Release -f net10.0 -r linux-x64 -o ./publish
 
 exit
 
