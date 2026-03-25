@@ -1,0 +1,7 @@
+services:
+  bagetter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: bagetter  # Имя образа для Docker Hub
+    container_name: bagetter

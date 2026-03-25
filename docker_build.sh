@@ -57,7 +57,7 @@ exit
 rm -rf ./publish
 
 echo "▶️ Архивация контейнера BagetterUz..."
-gzip -f dbupdater.tar
+gzip -f bagetter.tar
 echo "✅  Архивация контейнера BagetterUz завершена."
 
 mv /mnt/c/Users/igorpooh/Desktop/Projects/Ru.Dolgov/ResDiary/*.tar.gz /mnt/c/Users/igorpooh/Desktop/Projects/Ru.Dolgov/ResDiary/DockerBuild
